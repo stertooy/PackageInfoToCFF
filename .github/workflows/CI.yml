@@ -39,5 +39,4 @@ jobs:
       - name: "Validate citation"
         uses: citation-file-format/cffconvert-github-action@2.0.0
         with:
-          args: "-i /opt/gap/pkg/${{ matrix.pkg }}/CITATION.cff --validate"
-          context: .
+          args: "--validate"
