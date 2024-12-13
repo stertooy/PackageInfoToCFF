@@ -34,8 +34,10 @@ jobs:
           cd $GAP_HOME/pkg/${{ matrix.pkg }}
           gap $SCRIPT_DIR/makecitation.g -c "QuitGap();"
           cat $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff
+          cp $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff $SCRIPT_DIR/CITATION.cff
 
       - name: "Validate citation"
         uses: citation-file-format/cffconvert-github-action@2.0.0
         with:
           args: "-i /opt/gap/pkg/${{ matrix.pkg }}/CITATION.cff --validate"
+          context: .
