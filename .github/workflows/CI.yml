@@ -40,9 +40,10 @@ jobs:
           SCRIPT_DIR=$PWD
           ls $GAP_HOME/pkg
           cd $GAP_HOME/pkg/${{ matrix.pkg }}
-          gap $SCRIPT_DIR/makecitation.g
+          gap $SCRIPT_DIR/makecitation.g -c "QuitGap();"
 
       - name: "Validate citation"
         uses: dieghernan/cff-validator@v3
         with:
           install-r: true
+          citation-path: $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff
