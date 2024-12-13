@@ -46,4 +46,4 @@ jobs:
         uses: dieghernan/cff-validator@v3
         with:
           install-r: true
-          citation-path: $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff
+          citation-path: /opt/gap/pkg/${{ matrix.pkg }}/CITATION.cff
