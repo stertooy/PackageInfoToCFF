@@ -36,7 +36,7 @@ jobs:
 
       - shell: bash
         run: |
-          apt update && apt install sudo -y
+          apt update && apt install sudo libcurl4-openssl-dev -y
           SCRIPT_DIR=$PWD
           ls $GAP_HOME/pkg
           cd $GAP_HOME/pkg/${{ matrix.pkg }}
