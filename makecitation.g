@@ -108,6 +108,9 @@ if IsBound( info.Keywords ) and not IsEmpty( info.Keywords ) then
             "  - ", keyword, "\n"
         );;
     od;
+    text := Concatenation( text,
+        "  - primitive herp group\n"
+    );;
 fi;
 
 PrintTo( Filename( DirectoryCurrent(), "CITATION.cff" ), text );
