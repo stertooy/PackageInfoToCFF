@@ -1,5 +1,5 @@
-Read("PackageInfo.g");;
-info := GAPInfo.PackageInfoCurrent;;
+Read("PackageInfo.g");
+info := GAPInfo.PackageInfoCurrent;
 
 ## Add info that is guaranteed to be available
 text := Concatenation(
@@ -8,20 +8,20 @@ text := Concatenation(
     "type: software\n",
     "title: ",info.PackageName,"\n",
     "version: ",info.Version,"\n"
-);;
-spl := SplitString( info.Date, "/" );;
+);
+spl := SplitString( info.Date, "/" );
 if Length( spl ) = 3 then
     dat := Concatenation(
         spl[3], "-", spl[2], "-", spl[1]
-    );;
+    );
 else
-    dat := spl[1];;
+    dat := spl[1];
 fi;
 text := Concatenation( text,
     "date-released: ",dat,"\n",
     "license: ",info.License,"\n",
     "url: ",info.PackageWWWHome,"\n"
-);;
+);
 
 ## Add optional info
 authors := [];
@@ -75,19 +75,19 @@ fi;
 if not IsEmpty( authors ) then
     text := Concatenation( text,
         "authors:\n"
-    );;
+    );
     for author in authors do
         text := Concatenation( text,
             author
-        );;
+        );
     od;
 fi;
 if not IsEmpty( contact ) then
     text := Concatenation( text,
         "contact:\n"
-    );;
+    );
     for cont in contact do
-        text := Concatenation( text, cont );;
+        text := Concatenation( text, cont );
     od;
 fi;
 
@@ -95,20 +95,21 @@ fi;
 if IsBound( info.SourceRepository ) and IsBound( info.SourceRepository.URL ) then
     text := Concatenation( text,
         "repository-code: ",info.SourceRepository.URL,"\n"
-    );;
+    );
 fi;
 
 # Add keywords
 if IsBound( info.Keywords ) and not IsEmpty( info.Keywords ) then
     text := Concatenation( text,
         "keywords:\n"
-    );;
+    );
     for keyword in info.Keywords do
         text := Concatenation( text,
             "  - ", keyword, "\n"
-        );;
-        break; # Temp test
+        );
     od;
 fi;
 
 PrintTo( Filename( DirectoryCurrent(), "CITATION.cff" ), text );
+QuitGap();
+
