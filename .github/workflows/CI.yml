@@ -37,6 +37,7 @@ jobs:
       - shell: bash
         run: |
           SCRIPT_DIR=$PWD
+          ls $GAP_ROOT/pkg
           cd $GAP_ROOT/pkg/${{ matrix.pkg }}
           gap $SCRIPT_DIR/makecitation.g
 
