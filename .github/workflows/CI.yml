@@ -30,7 +30,6 @@ jobs:
 
       - shell: bash
         run: |
-          apt update && apt install sudo libcurl4-openssl-dev -y
           SCRIPT_DIR=$PWD
           cd $GAP_HOME/pkg/${{ matrix.pkg }}
           gap $SCRIPT_DIR/makecitation.g -c "QuitGap();"
