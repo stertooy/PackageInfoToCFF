@@ -105,7 +105,7 @@ if IsBound( info.Keywords ) then
     );;
     for keyword in info.Keywords do
         text := Concatenation( text,
-            "  - ", keyword, "\n"
+            "  - \"", keyword, "\"\n"
         );;
     od;
 fi;
