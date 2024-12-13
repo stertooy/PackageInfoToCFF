@@ -37,7 +37,6 @@ jobs:
           cat $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff
 
       - name: "Validate citation"
-        uses: dieghernan/cff-validator@v3
+        uses: citation-file-format/cffconvert-github-action@2.0.0
         with:
-          install-r: true
-          citation-path: /opt/gap/pkg/${{ matrix.pkg }}/CITATION.cff
+          args: "-i /opt/gap/pkg/${{ matrix.pkg }}/CITATION.cff --validate"
