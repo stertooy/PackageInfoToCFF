@@ -38,9 +38,9 @@ jobs:
         run: |
           apt update && apt install sudo libcurl4-openssl-dev -y
           SCRIPT_DIR=$PWD
-          ls $GAP_HOME/pkg
           cd $GAP_HOME/pkg/${{ matrix.pkg }}
           gap $SCRIPT_DIR/makecitation.g -c "QuitGap();"
+          cat $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff
 
       - name: "Validate citation"
         uses: dieghernan/cff-validator@v3
