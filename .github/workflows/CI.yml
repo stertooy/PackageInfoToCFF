@@ -24,7 +24,6 @@ jobs:
           - gapdoc
           - primgrp
           - smallgrp
-          - transgrp
 
     container:
       image: ghcr.io/stertooy/gda-image:${{ matrix.gap-version }}-full
