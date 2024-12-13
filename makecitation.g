@@ -99,13 +99,13 @@ if IsBound( info.SourceRepository ) and IsBound( info.SourceRepository.URL ) the
 fi;
 
 # Add keywords
-if IsBound( info.Keywords ) then
+if IsBound( info.Keywords ) and not IsEmpty( info.Keywords ) then
     text := Concatenation( text,
         "keywords:\n"
     );;
     for keyword in info.Keywords do
         text := Concatenation( text,
-            "  - \"", keyword, "\"\n"
+            "  - ", keyword, "\n"
         );;
     od;
 fi;
