@@ -7,18 +7,13 @@ on:
 jobs:
 
   test:
-    name: "Test package ${{ matrix.pkg }} on GAP-${{ matrix.gap-version }}"
+    name: "Test package ${{ matrix.pkg }}"
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name 
     
     strategy:
       fail-fast: false
       matrix:
-        gap-version:
-          - master
-          - 4.14.0
-          - 4.13.1
-          - 4.13.0
         pkg:
           - example
           - gapdoc
