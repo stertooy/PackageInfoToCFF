@@ -32,7 +32,7 @@ jobs:
         run: |
           SCRIPT_DIR=$PWD
           cd $GAP_HOME/pkg/${{ matrix.pkg }}
-          gap $SCRIPT_DIR/makecitation.g -c "QuitGap();"
+          gap $SCRIPT_DIR/makecitation.g
           cat $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff
           cp $GAP_HOME/pkg/${{ matrix.pkg }}/CITATION.cff $SCRIPT_DIR/CITATION.cff
 
