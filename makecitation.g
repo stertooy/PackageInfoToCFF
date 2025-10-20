@@ -4,7 +4,7 @@ info := GAPInfo.PackageInfoCurrent;
 ## Add info that is guaranteed to be available
 text := Concatenation(
     "cff-version: 1.2.0\n",
-    "message: If you use this GAP package, please cite it using the metadata from this file.",
+    "message: If you use this GAP package, please cite it using the metadata from this file.\n",
     "type: software\n",
     "title: ",info.PackageName,"\n",
     "version: ",info.Version,"\n"
