@@ -27,15 +27,6 @@ text := Concatenation( text,
 authors := [];
 contact := [];
 
-# Add Support Email to contacts
-if IsBound( info.SupportEmail ) then
-    supp := Concatenation(
-    "  - name: Support Email\n",
-    "    email: ", info.SupportEmail, "\n"
-    );
-    Add( contact, supp );
-fi;
-
 # Add persons to author or contacts
 if IsBound( info.Persons ) then
     for person in info.Persons do
@@ -68,6 +59,24 @@ if IsBound( info.Persons ) then
             Add( contact, prsn );
         fi;
     od;
+fi;
+
+# Add Support Email to contacts
+if IsBound( info.SupportEmail ) then
+    supp := Concatenation(
+        "  - name: Support Email\n",
+        "    email: ", info.SupportEmail, "\n"
+    );
+    Add( contact, supp );
+fi;
+
+# Add Issue Tracker to contacts
+if IsBound( info.IssueTrackerURL ) then
+    supp := Concatenation(
+        "  - name: Issue Tracker\n",
+        "    website: ", info.IssueTrackerURL, "\n"
+    );
+    Add( contact, supp );
 fi;
 
 if not IsEmpty( authors ) then
