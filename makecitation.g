@@ -92,7 +92,14 @@ fi;
 # Add repository
 if IsBound( info.SourceRepository ) and IsBound( info.SourceRepository.URL ) then
     text := Concatenation( text,
-        "repository-code: ",info.SourceRepository.URL,"\n"
+        "repository-code: ", info.SourceRepository.URL, "\n"
+    );
+fi;
+
+# Add website
+if IsBound( info.PackageWWWHome ) then
+    text := Concatenation( text,
+        "url: ", info.PackageWWWHome, "\n"
     );
 fi;
 
