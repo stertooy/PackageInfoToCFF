@@ -1,14 +1,16 @@
 Read("PackageInfo.g");
 info := GAPInfo.PackageInfoCurrent;
 
-## Add info that is guaranteed to be available
+# Add basic info
 text := Concatenation(
     "cff-version: 1.2.0\n",
     "message: If you use this GAP package, please cite it using the metadata from this file.\n",
     "type: software\n",
-    "title: ",info.PackageName,"\n",
-    "version: ",info.Version,"\n"
+    "title: ", info.PackageName, "\n",
+    "abstract: ", info.Subtitle, "\n",
+    "version: ", info.Version, "\n"
 );
+
 spl := SplitString( info.Date, "/" );
 if Length( spl ) = 3 then
     dat := Concatenation(
@@ -19,11 +21,9 @@ else
 fi;
 text := Concatenation( text,
     "date-released: ",dat,"\n",
-    "license: ",info.License,"\n",
-    "url: ",info.PackageWWWHome,"\n"
+    "license: ",info.License,"\n"
 );
 
-## Add optional info
 authors := [];
 contact := [];
 
@@ -89,19 +89,15 @@ if not IsEmpty( contact ) then
     od;
 fi;
 
-# Add repository
+# Add repository and website
 if IsBound( info.SourceRepository ) and IsBound( info.SourceRepository.URL ) then
     text := Concatenation( text,
         "repository-code: ", info.SourceRepository.URL, "\n"
     );
 fi;
-
-# Add website
-if IsBound( info.PackageWWWHome ) then
-    text := Concatenation( text,
-        "url: ", info.PackageWWWHome, "\n"
-    );
-fi;
+text := Concatenation( text,
+    "url: ", info.PackageWWWHome, "\n"
+);
 
 # Add keywords
 if IsBound( info.Keywords ) and not IsEmpty( info.Keywords ) then
