@@ -4,6 +4,7 @@ info := GAPInfo.PackageInfoCurrent;
 ## Add info that is guaranteed to be available
 text := Concatenation(
     "cff-version: 1.2.0\n",
+    "message: If you use this GAP package, please cite it using the metadata from this file.",
     "type: software\n",
     "title: ",info.PackageName,"\n",
     "version: ",info.Version,"\n"
@@ -35,6 +36,7 @@ if IsBound( info.SupportEmail ) then
     Add( contact, supp );
 fi;
 
+# Add persons to author or contacts
 if IsBound( info.Persons ) then
     for person in info.Persons do
         prsn := Concatenation(
@@ -60,12 +62,9 @@ if IsBound( info.Persons ) then
                 "    website: ", person.WWWHome, "\n"
             );
         fi;
-        # Add person to authors
         if IsBound( person.IsAuthor ) and person.IsAuthor then
             Add( authors, prsn );
-        fi;
-        # Add person to contacts
-        if IsBound( person.IsMaintainer ) and person.IsMaintainer then
+        elif IsBound( person.IsMaintainer ) and person.IsMaintainer then
             Add( contact, prsn );
         fi;
     od;
@@ -111,4 +110,3 @@ fi;
 
 PrintTo( Filename( DirectoryCurrent(), "CITATION.cff" ), text );
 QuitGap();
-
